@@ -10,6 +10,6 @@ btn.addEventListener('click', function () {
 })
 
 speech.addEventListener('result', function (e) {
-    document.querySelector('.content').innerHTML = e.toString();
+    document.querySelector('.content').innerHTML = JSON.stringify(e);
 });
 
