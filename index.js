@@ -12,6 +12,5 @@ btn.addEventListener('click', function () {
 })
 
 speech.addEventListener('result', function (e) {
-    document.querySelector('.content').innerHTML = JSON.stringify(e); //e.results[0][0].transcript;
-    alert(e.innerText)
+    document.querySelector('.content').innerHTML = e.results.item(0).item(0).transcript;
 });
