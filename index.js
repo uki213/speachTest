@@ -19,4 +19,6 @@ speech.addEventListener('result', function (e) {
     synthes.lang = "ja-JP"
     speechSynthesis.speak(synthes);
 
+    alert(retrunText);
+
 });
