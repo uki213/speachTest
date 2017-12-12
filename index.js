@@ -1,24 +1,32 @@
 // 言語設定
 const speech = new webkitSpeechRecognition();
+
 speech.lang = 'ja';
 
 obj = { test: 'aaa' }
 
 // エレメント設定
-const btn = document.getElementById('btn');
+const BTN = document.getElementById('btn');
+const CONTENT = document.querySelector('.content');
+const JSON_OUTPUT = document.querySelector('.jsonOutput');
 
-btn.addEventListener('click', function () {
+BTN.addEventListener('click', function () {
     speech.start();
 })
 
 speech.addEventListener('result', function (e) {
     const retrunText = e.results.item(0).item(0).transcript;
-    document.querySelector('.content').innerHTML = retrunText
+    CONTENT.innerHTML = retrunText
 
     var synthes = new SpeechSynthesisUtterance(retrunText);
     synthes.lang = "ja-JP"
     speechSynthesis.speak(synthes);
 
-    alert(retrunText);
+    kuromoji.builder({ dicPath: './kuromoji.js/dict/' }).build(function (err, tokenizer) {
+        // tokenizer is ready
+        var path = tokenizer.tokenize(retrunText);
+        JSON_OUTPUT.innerHTML = JSON.stringify(path);
+        
+    });
 
 });
