@@ -26,7 +26,7 @@ speech.addEventListener('result', function (e) {
         // tokenizer is ready
         var path = tokenizer.tokenize(retrunText);
         JSON_OUTPUT.innerHTML = JSON.stringify(path);
-        
+        alert(JSON.stringify(path));
     });
 
 });
